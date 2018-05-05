@@ -1,18 +1,18 @@
 # Running-TDD
 테스트 주도 개발 튜토리얼 따라가기
 
-## C8-객체 만들기
-두 times() 구현 코드가 거의 똑같음.<br>
-<br>
-Dollar와 Franc의 두 times()가 Money를 반환하게 만들면 더 비슷해짐!!<br>
-근데 그러고 나니 Dollar와 Franc가 하는게 없어.. 지워버리고 싶어. 그래도 차근차근 하자 ^~^;;<br>
-그러니까 **두 하위클래스에 대한 직접적인 참조를 줄여나가서 지울 명분을 만들자**
+## C9-우리가 사는 시간
+### 통화를 도입할거야
+통화 개념을 어떻게 테스트할까?<br>
+통화를 표현하기 위한 복잡한 객체들을 원할 수도 있겠다. 그리고 그 객체들이 필요한 만큼만 만들어지도록 하기 위해 경량 팩토리(flyweight factories)를 사용할 수도 있겠지만, 당분간은 문자열을 쓰자.<br>
 
 ### 따라서
-Money에 Dollar와 Franc 각각을 반환하는 팩토리 메서드(Factory Method)를 도입하자.<br>
--> 이제 그 어느곳에서도 하위 클래스인 Dollar와 Franc의 존재를 알지 못함. 하위 클래스의 존재를 테스트에서 분리(decoupling)함으로써 어떤 모델 코드에도 영향을 주지 않고 상속 구조를 마음대로 변경할 수 있게 됨<br>
+다른 부분들을 호출자(팩토리 메서드)로 옮김으로써 두 생성자를 일치시킴<br>
+times()가 팩토리 메서드를 사용하도록 만들기 위해 리팩토링 잠시 중단<br>
+비슷한 리팩토링(Franc에 했던 일을 Dollar에도 적용)을 한 번의 큰 단계로 처리<br>
+동일한 생성자들을 상위 클래스로 올림<br>
 <br>
-**자, 이제 testFrancMultiplication을 지워야할까?**
+결국 times() 통일은 못시켰다.
 
 ### 작업 리스트
 - $5 + 10CHF = $10(환율이 2:1일 경우)
@@ -29,5 +29,5 @@ Money에 Dollar와 Franc 각각을 반환하는 팩토리 메서드(Factory Meth
 - ~~공용 equals()~~
 - 공용 times()
 - ~~Franc과 Dollar 비교하기~~
-- 통화?
-- testFrancMultiplication을 지워야 할까?
+- ~~통화?~~
+- testFrancMultiplication 제거
