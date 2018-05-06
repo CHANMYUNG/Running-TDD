@@ -1,17 +1,20 @@
 # Running-TDD
 테스트 주도 개발 튜토리얼 따라가기
 
-## C10-흥미로운 시간
-Dollar와 Franc의 times를 통일 시킬 방법이 없다. 서로 각각 times() 내부에서 `Money.dollar()`와 `Money.franc()`를 호출하기 때문에 명백하게 통일시킬 방법은 떠오르지 않는다.<br>
-**때로는 전진하기 위해 후진할 때가 필요한 법, 팩토리 메서드를 인라인시키자. 아쉬워도 어쩔 수 없다.**<br>
+## C11-모든 악의 근원
+드디어 Dollar와 Franc를 삭제할 때가 왔다.<br>
+Money의 dollar()와 franc()에서 Money 객체를 반환하도록 수정하면 Dollar와 Franc 클래스를 사용하는 곳은 테스트 뿐이다.<br>
+testDifferentClassEquality에서 하는 동치성 검사는 testEquality가 대신할 수 있다. 필요없는 assertion을 줄이며, Dollar와 Franc을 Money로 통합시킬 것이므로 곱하기에 대한 테스트도 Dollar(Dollar 클래스가 아닌 currency가 "USD"인 Money 객체)에 대해서만 수행하면 된다. 따라서 testFrancMultiplication을 삭제해도 된다.<br>
+그럼 진짜로 **Dollar와 Franc은 필요가 없어진다.**<br>
+**지우자**<br>
+
 
 ### 작업 내용
-toString()을 override해도 둘의 Money 클래스의 equals() 메서드 내에서 클래스를 비교하는 로직 때문에 Franc 10CHF와 Money 10CHF가 다르다고 판단된다.<br> 
--> 따라서 class 대신 currency를 비교하도록 한다. (실제로 중요한 것은 같은 클래스인지가 아니라 통화 단위가 같은가 이기 때문)<br>
-Dollar와 Franc의 times()에서 Money 객체를 만들어 반환하도록 하니 코드가 공통된다. 따라서 상위 클래스 Money의 times()로 빼낸다.<br>
+하위 클래스의 속을 들어내는 걸 완료하고, 하위 클래스를 삭제했다.<br>
+기존의 소스 구조에서는 필요했지만 새로운 구조에서는 필요 없게 된 테스트를 제거했다.<br>
 
 ### 결국
-전진을 위해 후진했다. Money 클래스를 다시 콘크리트 클래스로 바꾸고, 하위 클래스의 공통된 times() 구현을 상위 클래스인 Money로 올렸다.<br>
+Dollar와 Franc을 삭제하고 Money가 이 둘을 대체하도록 하는데 성공했다.
 
 ### 작업 리스트
 - $5 + 10CHF = $10(환율이 2:1일 경우)
@@ -24,7 +27,7 @@ Dollar와 Franc의 times()에서 Money 객체를 만들어 반환하도록 하�
 - Equal null
 - Equal object
 - ~~5CHF X 2 = 10CHF~~
-- Dollar/Franc 중복
+- ~~Dollar/Franc 중복~~
 - ~~공용 equals()~~
 - ~~공용 times()~~
 - ~~Franc과 Dollar 비교하기~~
