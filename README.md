@@ -32,4 +32,4 @@ Dollar와 Franc을 삭제하고 Money가 이 둘을 대체하도록 하는데 �
 - ~~공용 times()~~
 - ~~Franc과 Dollar 비교하기~~
 - ~~통화?~~
-- testFrancMultiplication 제거
+- ~~testFrancMultiplication 제거~~
