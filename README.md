@@ -1,13 +1,13 @@
 # Running-TDD
 테스트 주도 개발 튜토리얼 따라가기
 
-## C14-바꾸기
-2프랑을 달러로 바꾸고 싶음.
+## C15-서로 다른 통화 더하기
+이제 $5 + 10CHF를 해보자.<br>
+
 
 ### 작업 내용
-- Expression.reduce()에 Bank 인자를 추가함
-- Bank에서 환율 (rates)를 관리하도록 함 (물론 설정도)
-- Pair을 만들어야 할지 알아보기 위해 testArrayEquals를 작성해 보았다.
+- 좀 더 추상적인 선언을 통해 가지에서 뿌리 (Money -> Expression)로 일반화했다.
+- 변경 후(Expression fiveBucks), 그 영향을 받은 다른 부분들을 변경하기 위해 컴파일러의 지시를 따랐다. (Expression에 plus()를 추가하기 등등) 
 
 ### 작업 리스트
 - $5 + 10CHF = $10(환율이 2:1일 경우)
